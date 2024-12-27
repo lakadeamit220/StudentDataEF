@@ -1,0 +1,77 @@
+﻿@model StudentDataEF.Models.Student
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<h1 class="text-center mb-5">Student Details</h1>
+
+<!-- Form for dropdown -->
+<div class="card shadow-sm p-4">
+    <form method="post" asp-action="Index">
+        <div class="form-group">
+            <select id="selectedStudent" name="selectedStudentId" class="form-control border-primary">
+                <option value="">-- Select Student --</option>
+                @foreach (var student in (SelectList)ViewBag.StudentList)
+                {
+                    <option value="@student.Value">@student.Text</option>
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3 w-100">View Details</button>
+    </form>
+</div>
+
+<!-- Display details of the selected student -->
+@if (Model != null)
+{
+    <div class="card shadow-sm mt-5 p-4">
+        <h2 class="text-primary mb-4">Details</h2>
+        <p><strong>Name:</strong> @Model.Name</p>
+        <p><strong>Age:</strong> @Model.Age</p>
+        <p><strong>Course:</strong> @Model.Course</p>
+    </div>
+}
+
+<!-- Additional styling -->
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+        color: #343a40;
+    }
+
+    .card {
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .text-primary {
+        color: #007bff;
+    }
+
+    .shadow-sm {
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+</style>

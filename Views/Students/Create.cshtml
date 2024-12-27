@@ -1,0 +1,60 @@
+﻿@model StudentDataEF.Models.Student
+
+@{
+    ViewData["Title"] = "Create Student";
+}
+
+<h1 class="text-center my-4">@ViewData["Title"]</h1>
+
+<h4 class="text-center mb-4">Add New Student</h4>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Student Information</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create">
+                    <!-- Validation Summary -->
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger" style="display: none;"></div>
+
+                    <!-- Name Field -->
+                    <div class="form-group mb-3">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" placeholder="Enter student name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <!-- Age Field -->
+                    <div class="form-group mb-3">
+                        <label asp-for="Age" class="form-label"></label>
+                        <input asp-for="Age" type="number" class="form-control" placeholder="Enter student age" />
+                        <span asp-validation-for="Age" class="text-danger"></span>
+                    </div>
+
+                    <!-- Course Field -->
+                    <div class="form-group mb-3">
+                        <label asp-for="Course" class="form-label"></label>
+                        <input asp-for="Course" class="form-control" placeholder="Enter course name" />
+                        <span asp-validation-for="Course" class="text-danger"></span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="d-grid">
+                        <input type="submit" value="Create" class="btn btn-primary btn-block" />
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

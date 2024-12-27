@@ -1,0 +1,49 @@
+﻿@model StudentDataEF.Models.Student
+
+@{
+    ViewData["Title"] = "Delete Student";
+}
+
+<h1 class="text-center my-4 text-danger">@ViewData["Title"]</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-lg">
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0">Confirm Deletion</h5>
+            </div>
+            <div class="card-body">
+                <h4 class="text-center mb-4">Are you sure you want to delete this student?</h4>
+                <dl class="row">
+                    <!-- Name -->
+                    <dt class="col-sm-3">Name</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
+
+                    <!-- Age -->
+                    <dt class="col-sm-3">Age</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Age)</dd>
+
+                    <!-- Course -->
+                    <dt class="col-sm-3">Course</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Course)</dd>
+                </dl>
+            </div>
+            <div class="card-footer text-center">
+                <form asp-action="Delete" class="d-inline-block">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="submit" value="Delete" class="btn btn-danger me-2" />
+                </form>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    dl.row dt {
+        font-weight: bold;
+    }
+    dl.row dd {
+        margin-bottom: 1rem;
+    }
+</style>

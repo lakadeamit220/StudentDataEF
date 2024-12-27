@@ -1,0 +1,46 @@
+﻿@model StudentDataEF.Models.Student
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<h1 class="text-center my-4">@ViewData["Title"]</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-lg">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">Student Information</h5>
+            </div>
+            <div class="card-body">
+                <h4 class="text-center mb-4">Student Details</h4>
+                <dl class="row">
+                    <!-- Name -->
+                    <dt class="col-sm-3">Name</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
+
+                    <!-- Age -->
+                    <dt class="col-sm-3">Age</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Age)</dd>
+
+                    <!-- Course -->
+                    <dt class="col-sm-3">Course</dt>
+                    <dd class="col-sm-9">@Html.DisplayFor(model => model.Course)</dd>
+                </dl>
+            </div>
+            <div class="card-footer text-center">
+                <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning me-2">Edit</a>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    dl.row dt {
+        font-weight: bold;
+    }
+    dl.row dd {
+        margin-bottom: 1rem;
+    }
+</style>

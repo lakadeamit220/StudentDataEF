@@ -1,0 +1,76 @@
+﻿@model StudentDataEF.Models.Student
+
+@{
+    ViewData["Title"] = "Edit Student";
+}
+
+<h1 class="text-center my-4">@ViewData["Title"]</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white">
+                <strong>Edit Student Information</strong>
+            </div>
+            <div class="card-body">
+                <form asp-action="Edit">
+                    <!-- Display Validation Errors -->
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <!-- Hidden Field for Id -->
+                    <input type="hidden" asp-for="Id" />
+
+                    <!-- Name Field -->
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <!-- Age Field -->
+                    <div class="form-group">
+                        <label asp-for="Age" class="control-label"></label>
+                        <input asp-for="Age" class="form-control" />
+                        <span asp-validation-for="Age" class="text-danger"></span>
+                    </div>
+
+                    <!-- Course Field -->
+                    <div class="form-group">
+                        <label asp-for="Course" class="control-label"></label>
+                        <input asp-for="Course" class="form-control" />
+                        <span asp-validation-for="Course" class="text-danger"></span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group text-center">
+                        <input type="submit" value="Save Changes" class="btn btn-primary btn-block" />
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    .card-header {
+        font-size: 1.2rem;
+    }
+    .card-body {
+        padding: 2rem;
+    }
+    .form-control {
+        border-radius: 0.375rem;
+    }
+</style>
